@@ -29,18 +29,18 @@ class File extends Model
 
     public function handleAction($action)
     {
-        if (! Storage::exists($this->path)) {
+        if (! Storage::disk('public')->exists($this->path)) {
             abort(404, 'File tidak ditemukan');
         }
 
         if ($action === 'stream') {
-            return response()->file(Storage::path($this->path), [
+            return response()->file(Storage::disk('public')->path($this->path), [
                 'Content-Type' => $this->mime_type,
             ]);
         }
 
         if ($action === 'download') {
-            return Storage::download($this->path, $this->filename);
+            return Storage::disk('public')->download($this->path, $this->filename);
         }
 
         abort(400, 'Aksi tidak valid');
