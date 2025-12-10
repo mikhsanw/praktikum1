@@ -2,10 +2,24 @@
 
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/file/{path}', function ($path) {
+
+    // Path boleh mengandung subfolder
+    $path = 'public/'.$path;
+
+    if (! Storage::exists($path)) {
+        abort(404);
+    }
+
+    return Storage::response($path);
+
+})->where('path', '.*');
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
