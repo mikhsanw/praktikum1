@@ -50,7 +50,7 @@
 
             <!-- Header -->
             <header class="bg-white shadow p-4 flex justify-between items-center relative">
-                <h1 class="text-xl font-semibold">@yield('page-title', 'Dashboard')</h1>``
+                <h1 class="text-xl font-semibold">@yield('page-title', 'Dashboard')</h1>
 
                 <!-- User Dropdown -->
                 <div class="relative">
