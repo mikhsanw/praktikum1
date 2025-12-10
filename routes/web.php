@@ -13,7 +13,7 @@ Route::get('/file/{path}', function ($path) {
     // Path boleh mengandung subfolder
     $path = urldecode($path);
 
-    if (! Storage::exists($path)) {
+    if (! Storage::disk('public')->exists($path)) {
         abort(404);
     }
 
