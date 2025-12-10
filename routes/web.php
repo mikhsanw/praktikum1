@@ -11,13 +11,13 @@ Route::get('/', function () {
 Route::get('/file/{path}', function ($path) {
 
     // Path boleh mengandung subfolder
-    $path = 'public/'.urldecode($path);
+    $path = urldecode($path);
 
     if (! Storage::exists($path)) {
         abort(404);
     }
 
-    return response()->file(Storage::path($this->path), [
+    return response()->file(Storage::disk('public')->path($path), [
         'Content-Type' => $this->mime_type,
     ]);
 
