@@ -17,7 +17,9 @@ Route::get('/file/{path}', function ($path) {
         abort(404);
     }
 
-    return Storage::response($path);
+    return response()->file(Storage::path($this->path), [
+        'Content-Type' => $this->mime_type,
+    ]);
 
 })->where('path', '.*');
 
