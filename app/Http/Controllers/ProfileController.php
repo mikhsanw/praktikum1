@@ -35,7 +35,7 @@ class ProfileController extends Controller
             $extension = $file->getClientOriginalExtension();
             $filename = $user->id.'_'.time().'.'.$extension;
             $folder = 'profiles/'.$user->id;
-            $path = $file->storeAs($folder, $filename, 'public');
+            $path = $file->storeAs($folder, $filename);
 
             $user->file()->create([
                 'alias' => 'foto-profil',
