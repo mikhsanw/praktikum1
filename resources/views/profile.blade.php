@@ -77,7 +77,7 @@
 
                             {{-- Download link jika ada file --}}
                             @if ($user->file)
-                                <a href="{{ $user->file->file_download }}"
+                                <a href="{{ url('/storage/' . $user->file->path) }}"
                                     class="inline-block mt-2 text-sm text-indigo-600 hover:underline">
                                     Unduh Foto
                                 </a>
