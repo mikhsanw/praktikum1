@@ -8,9 +8,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/file/{path}/{status?}', function ($path) {
+Route::get('/file/{path}/{status?}', function ($path, $status = null) {
 
-    // Path boleh mengandung subfolder
     $path = urldecode($path);
 
     if (! Storage::disk('public')->exists($path)) {
