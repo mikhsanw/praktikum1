@@ -51,7 +51,7 @@
                     <div class="flex items-center space-x-6 mt-2">
                         {{-- Current profile photo --}}
                         @if ($user->file)
-                            <img src="{{ $user->file->file_stream }}" alt="Foto Profil"
+                            <img src="{{ url('/storage/' . $user->file->path) }}" alt="Foto Profil"
                                 class="w-20 h-20 rounded-full object-cover border">
                         @else
                             <div class="w-20 h-20 rounded-full bg-gray-200 flex items-center justify-center text-gray-500">
@@ -77,7 +77,7 @@
 
                             {{-- Download link jika ada file --}}
                             @if ($user->file)
-                                <a href="{{ url('/storage/' . $user->file->path) }}"
+                                <a href="{{ $user->file->file_download }}"
                                     class="inline-block mt-2 text-sm text-indigo-600 hover:underline">
                                     Unduh Foto
                                 </a>
